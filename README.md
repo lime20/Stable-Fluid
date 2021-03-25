@@ -1,2 +1,45 @@
-# Stable-Fluid
-流体模拟
+# 流体模拟
+
+## 项目简介
+
+&#8194;&#8194;本项目为不可压缩流体仿真，可通过鼠标点击实现干扰。为保障顺利运行需安装TaiChi（[详情](https://github.com/taichi-dev/taichi))。
+
+&#8194;&#8194;该仿真工作流程大体可分为Advection与Projection两部分，其中Advection部分可采用Semi-Lagrangian advection与BFECC两种方法中任意一种（均已实现），Projection部分通过jacobi迭代完成对速度场的更新。
+
+## 理论推导
+由不可压缩流体的N-S方程有：
+
+![1](https://dm2305files.storage.live.com/y4mfM1QhUhtn_CWpO2x5IVjKDqyjxzYTqcJdQf4xd6y9r5B2OH-OX-shaM22visY7zIiGBLVATZ_wz-O4OSnpfcDZAF25aJ7hBpc2sl_p6gOvKhlsnJ3aBBfqevfyQqRSbDqTkuODpj1nfyJHA6doFvNNnLmnqpFnO4kAruJHro0b8RQ6Os0N9WnbZPUgiI2mip?width=3904&height=767&cropmode=none)
+
+舍弃粘滞项，并且速度场无散：
+
+![2](https://dm2305files.storage.live.com/y4mtunjSLH6UW6hh2zEfS6olGnAXrqqj6m5WjTIJ7u2bWrvTFJuOnLCiDWnjN3YDaZEj3sQ-zBKmhZWAnv3mdaS4QUX970GEhqznJ8tQafp_oX4My04srsAkK-rSt9Zg_i659klirDjzVtf_lnS_ZGTOQAXswRjLkwGCYPXGUgEPQKZjOUmL4abnBhQl9kmvUPw?width=3822&height=1595&cropmode=none)
+
+![2.1](https://dm2305files.storage.live.com/y4mokkyPyIgkOJZV5zua-EByjzOidsz8Q0JwtCs5NqUt78X-pFaYid3B0qEYdPzvwVo2zPLD5ajNJRgKzqzUd4Wd6-2D6HJAXvAAFh-R9UtjhtFKiTwOUuzOpbXIQpDsMbEC0Ypem_7ZupqMqb_uyaYteb1m9kPXDqsuAtXXfjLytjyJn5WroR6fg1yD_6Rmb1n?width=3845&height=941&cropmode=none)
+
+对其使用Operator splitting有
+![3](https://dm2305files.storage.live.com/y4mpv3bGEsLzsgtuRnDSnphalmDbAlJXRfFeeeGLz_GrJTy8_fT1HY9mXFYATDfZq7uhjuXe02Js1iD6Kg2ZDw-em4V1WleY-eupn0sCJGUXco0MqmK6WA-PLyKhCeEzAqB2w0G1vjiG0BkPgwqTfb32tmVlndHqYCdqcJR_d8eYqYmFtacRSVXXzcuOFjbKp2u?width=3851&height=1069&cropmode=none)
+
+![4](https://dm2305files.storage.live.com/y4mPeY22d8_03t3lZFER95pNhdpgq_IZdV6L9ihO6ZicQEfkZzxQCKURx35babBLQSmD16YKundD3OW8GG1RPTQaPQncG30HFFHRNYFsazJmjs0E0pW6k7iMDlGdeTEtN8l7P2pyM541vViEkPlDVoHnJkZj0r8NOEA7ravkdQPUXqh1TNT5Mc456LvAKwg9vX_?width=3467&height=2259&cropmode=none)
+
+![5](https://dm2305files.storage.live.com/y4mgVMW6mq8sUPvI8pEDJRUOKQ-Q9EzS4EPqpx11fSoe0cy4dQLGelj0_RWHgEqlSoftkebs5fymdQWII9ug5ExBCakb0PbPYwOLIxaBUiKC7qE0vsJ7UyVTTByJ4pc40h-L-SQY-Gw8Nomunny-sYmdV8KN0nHXMKafCqO-WLjYoOlyKOkPE7vLGu53GsrZ-3Q?width=3865&height=1457&cropmode=none)
+
+展开得到：
+![6](https://dm2305files.storage.live.com/y4m1yZS45cV0DgCCAYXoryqgdm8TtHr9GpjSxjYBL4DQxmiBwgTOWoTgoFG_216hn-Yx1SNqMWHURHg7pdGhirb_FT5JakYSfCCCcn_KynbTshzhdpfKORu4ow6-T8_mEfWffI6r8jnccxvrq4K7Ra6DaLGjcJsn3vcXV07UXGgCAml0Xb3pjeiivQ8bdEv53PI?width=3928&height=1147&cropmode=none)
+
+![7](https://dm2305files.storage.live.com/y4mi7LISBGPBlNix4r_p4PE5_AlTwoT3MhgclqUkeGyk1jeIz-ifZWCA4e9YXJg-32iTqYe0aHdgT_Ni8TO2wFbiG6UrsMmeb0tmwqUrOhXqXhRBly411MLdJ_WoCDASGhcB6KRYPN9dQQsa6vU6xwdaj-NPXcVzvp-3-pHgYR88JzOv3iSgRi5RV9R8DQjd5Sr?width=3926&height=1255&cropmode=none)
+
+![8](https://dm2305files.storage.live.com/y4mrDGUuWJvc1D7eoihDaWmY3T1OFf3z94KAeMhSfpR4uDtyLdc6IGEQcyI18qh4unAeaTLebd1EBNbkrbHB3plUGYUgfdCf5cQInkMu9CFKpPifnxmogmjQezsN-YIV8lv_VGfsXZ9DCrm3EGuXrBSH_HUv6hDmaw5tDblHjLI15k1kxk3P-HRJYD6Jr_b_ugA?width=3889&height=857&cropmode=none)
+
+![9](https://dm2305files.storage.live.com/y4m0gTH2v9C7wcpZ0kms8Zo4L9LIEjA-grL1_HhbzcKOe9oSmmdCzaQca3z0_NlsYWSWhkz5r2X3L4AilR9qUSjueVvS1b8CMUDeQwLf_WG8DI4wTXTx0rz0UJ-nWvDCfyHT5bR5EzQ3PmagysKXF-Ut7hgfLHyK0PX0b_y0sMtj0iJNa_A2R68bl9z7yDdqGGr?width=3854&height=931&cropmode=none)
+
+![10](https://dm2305files.storage.live.com/y4m3Ouk3o20Q27Md-zh4BR9YgYwoEvlMMgGXjJZrqUb0_m4tSbNNJl3NX72tg8oD0YyQlQGSX8U5i0JivOsdC9L86qrTzNoIvMsEfj_D74FBzEfCG-UHAmWySjFEdI8-wk_eaKMy_ZhpqBh1-U9di3DTFFmfFCzH0S-lTvEWEyMh1wf97lnR8n0T2fQcovLNycB?width=3886&height=1023&cropmode=none)
+
+![11](https://dm2305files.storage.live.com/y4m_l8618omWU85PNmibByGr8hNBtU52_P2ZhMidGuI8FbcE1zrXMgM5oJfijlS4I0BbfC07omrV8HCkDJ7aeSQPWmmaGZ6cuHfeFQ6HAhNjq50uwrNkLU-5lnz_2mJmWTxbdITfkyvA_6xb7ugcHaPfXWglxuiOpC28RUVuUh38yIQE6q4XVVzVrvp2hdenU3I?width=3903&height=949&cropmode=none)
+
+![12](https://dm2305files.storage.live.com/y4m63aafr64WxfrOzCBP5VkvpTxmYFRXgS-mF7YrRoZEMlAfWVnUGmnLmhv8FpkFaBaAA7G_21r7GZ-fL5ljBqpq7PoKALsq_KET2Wm0EpbnQfhIgXrCUJBb9S2CrKi7p2pdCcv87K2yFHKf-_N0XkqAC0xhMmUlCtYlFhcMuG3J8h0Oy1sIS2JnWs_2cA9AZav?width=3911&height=415&cropmode=none)
+
+![13](https://dm2305files.storage.live.com/y4mgaZRt8-XtRfi7sIUvEUI9ILAqmcmmWFJ14GNzE0IVJKvPOIV2g9rWRyIc706yH58McKXwRS5aJjZLzacBdVYYJmCo1wITlU6sDiMGd2NJXleTc3Qrcam6PCN_VYFB2N3y7U_w1kyoS0AzVNBdHazYbzJDJjWS1NejYEM0_mW6kNzX7PobVDCjn1jTywEMNzZ?width=3907&height=417&cropmode=none)
+
+## 效果
+![eg](https://dm2305files.storage.live.com/y4mkpCPA32QKBUxDh_jJk5fszGo6bAKMxK26SmYssXwXAl27AUlE_F7vFYNOa9pwx1RmxQJzujYTWTSA7tghTKavLxcwWTcPwTEUmAi8IhbwzJ63dVzS9qiwUgyFVceNlYmgmU3dC5UCAbDx4npzlCNr8KbB8alrPrWIkiil-Fzdq_crM7VLbYEBsKa4Xk7tfV_?width=513&height=519&cropmode=none)
