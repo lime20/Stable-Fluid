@@ -26,5 +26,7 @@
 
 ![7](https://dm2305files.storage.live.com/y4mkz8caLwyXuIz2ik0TG2YlyaN8hHal8wZRZ8JkYxryw7AcNHHaU0xH8D1AjTGGIu0y1_amjTKDC9y3eva3pBIPzlULKR31GBPlvJdCBYl-pYzLRh-BeEIZ6A9ml3V3xNeMlsUn0QrVEmfJ6KfYx53OiwtXEQn6rTWWu3SiGSnfS4TEZwFqE_gpu_Lhah8msOy?width=1058&height=315&cropmode=none)
 
+注：本项目使用jacobi方法。
+
 ## 效果
 ![eg](https://dm2305files.storage.live.com/y4mkpCPA32QKBUxDh_jJk5fszGo6bAKMxK26SmYssXwXAl27AUlE_F7vFYNOa9pwx1RmxQJzujYTWTSA7tghTKavLxcwWTcPwTEUmAi8IhbwzJ63dVzS9qiwUgyFVceNlYmgmU3dC5UCAbDx4npzlCNr8KbB8alrPrWIkiil-Fzdq_crM7VLbYEBsKa4Xk7tfV_?width=513&height=519&cropmode=none)
