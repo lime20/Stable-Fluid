@@ -15,10 +15,13 @@
 
 ![2](https://dm2305files.storage.live.com/y4mEdjgGeaqr_3Iv5dsjOL7g8Hx2ESkRVNdqDfxWUvmHD0PUje33iZN_3UApdbGLONxMMGzvSfwjIEbSPR-PTQw4xSHx4MUP1k86YCynWhTZXA-PajdPllCKI2QsfJ6pSwm2YETHVCSV7gw-kA9lbm6D3TUKNfzSc8s6avqCbRasc-5UsBbmKIxlgOm7HBWbwpv?width=438&height=90&cropmode=none)
 
+
 对其使用Operator splitting有
+
 ![3](https://dm2305files.storage.live.com/y4mnTiSHWrjogYV8OBHxVHOWGfY1r5h0RDM8QUeoYlDgVZ8Nk6x7ss4hzAmahLiBZ4Fv6D8aSzCd08bVElQ-Y_On-lpHVCflW9SPUEwWa2PkXzZC35R917aQ6jTOfOBsNq99WcqL8j5LFEgRD7wrFpozLBNoQbkMStZkgpFqCBrQptF5wxaSmLSaugUzVvjOpsV?width=480&height=356&cropmode=none)
 
 展开得到：
+
 ![6](https://dm2305files.storage.live.com/y4m7mT50m45LG0K8ltBLQxtxa-9Ut2uOy4WLqyCrSAYHbjYI7qpnRYMn2_Pj3tSCCEMnyo3lRnroHtlZ2k7lNazpRc2Iys5MeqgYtmsXh__6--GGgOdGEO3Jh-aiDAAkXHplS5N7ZUVo2tg-Gcd-xE4a-oR2BZ-1fEVuctTJb6cMGElfMyz0kOX1-uT98p1QlpY?width=667&height=542&cropmode=none)
 
 ![7](https://dm2305files.storage.live.com/y4mkz8caLwyXuIz2ik0TG2YlyaN8hHal8wZRZ8JkYxryw7AcNHHaU0xH8D1AjTGGIu0y1_amjTKDC9y3eva3pBIPzlULKR31GBPlvJdCBYl-pYzLRh-BeEIZ6A9ml3V3xNeMlsUn0QrVEmfJ6KfYx53OiwtXEQn6rTWWu3SiGSnfS4TEZwFqE_gpu_Lhah8msOy?width=1058&height=315&cropmode=none)
